@@ -1,0 +1,29 @@
+@(controlTypes: List[ControlType], myForm: Form[String])
+
+@main("Control types list") {
+
+<h1>@controlTypes.size control type(s)</h1>
+
+<ul>
+    @controlTypes.map { ct =>
+    <li>
+        @ct.label
+
+        @helper.form(routes.Application.deleteControlType(ct.id)) {
+        <input type="submit" value="Delete">
+        }
+    </li>
+    }
+</ul>
+
+<h2>Add a new control type</h2>
+
+@helper.form(routes.Application.newControlType) {
+
+@helper.inputText(myForm("label"))
+
+<input type="submit" value="Create">
+
+}
+
+}
