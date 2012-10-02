@@ -41,5 +41,8 @@ object Application extends Controller {
       )
   }
 
-  def deleteControlType(id: Long) = TODO
+  def deleteControlType(id: Long) = Action {
+    ControlType.delete(id)
+    Redirect(routes.Application.controlTypes)
+  }
 }
